@@ -1,6 +1,6 @@
 {
   "name": "lb2",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Лабораторна робота з КПЗ №2",
   "type": "module",
   "main": "index.js",

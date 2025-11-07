@@ -2,6 +2,7 @@
   "name": "lb2",
   "version": "0.0.0",
   "description": "Лабораторна робота з КПЗ №2",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,17 +1,14 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-/** Ті самі утиліти, але вже з базовою типізацією */
-
+// попередні функції
 export function add(a: number, b: number): number {
   return a + b;
 }
 
 export function capitalize(s: string): string {
-  return String(s).charAt(0).toUpperCase() + String(s).slice(1);
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
-
-/** СКЛАДНИЙ ТИП */
 
 export type NumberFormatOptions = {
   precision?: number;
@@ -20,6 +17,24 @@ export type NumberFormatOptions = {
 
 export function formatNumber(value: number, options?: NumberFormatOptions): string {
   const precision = options?.precision ?? Number(process.env.APP_PRECISION ?? 2);
-
   return value.toFixed(precision);
+}
+
+// НОВЕ: інтерфейс і generic-функція
+
+export interface User {
+  id: number;
+  name: string;
+}
+
+export function groupBy<T>(arr: T[], key: keyof T): Record<string, T[]> {
+  return arr.reduce(
+    (acc, item) => {
+      const group = String(item[key]);
+      acc[group] = acc[group] ?? [];
+      acc[group].push(item);
+      return acc;
+    },
+    {} as Record<string, T[]>,
+  );
 }
